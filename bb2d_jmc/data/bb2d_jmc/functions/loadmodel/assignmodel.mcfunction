@@ -1,0 +1,1 @@
+execute if score @s useCustomHead matches 8 run function core:2dlogic/morph/cg_morph

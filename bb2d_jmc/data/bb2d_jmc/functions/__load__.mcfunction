@@ -1,0 +1,3 @@
+scoreboard objectives add __variable__ dummy
+scoreboard objectives add on_event_15djdg7 custom:leave_game
+scoreboard objectives add 000oqtozt_p_join dummy

@@ -1,0 +1,1 @@
+execute if score @p duiMemory matches 1.. if score @s playerID = @p damagerID run function bb2d_jmc:__private__/if_else/31

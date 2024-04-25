@@ -1,0 +1,2 @@
+execute if entity @s[tag=left] if score @s idleTime matches ..99 run function bb2d_jmc:__private__/if_else/42
+execute if entity @s[tag=right] if score @s idleTime matches ..99 run function bb2d_jmc:__private__/if_else/43

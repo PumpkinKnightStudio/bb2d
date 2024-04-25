@@ -1,0 +1,1 @@
+bossbar set bb2d:bb.6.left3 players

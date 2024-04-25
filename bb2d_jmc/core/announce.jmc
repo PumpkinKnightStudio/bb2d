@@ -1,0 +1,81 @@
+class announceBar{
+    function refresh_other(){
+        bossbar set bb2d:bb.1.global players @a;
+        bossbar set bb2d:bb.2.global players @a;
+        if(gameControl:.gameState >= 1){
+            bossbar set bb2d:bb.2.global players;
+        }
+        
+        bossbar set minecraft:faction_spawn players;
+        bossbar set minecraft:the_end players;
+        bossbar set bb2d:bb.3.global players;
+        bossbar set bb2d:bb.4.undefined players;
+        bossbar set bb2d:bb.5 players;
+        bossbar set bb2d:bb.6.left3 players;
+        bossbar set bb2d:bb.6.left2 players;
+        bossbar set bb2d:bb.6.right3 players;
+        bossbar set bb2d:bb.6.right2 players;
+
+
+
+
+        if(gameType:.type < 5 && gameControl:.gameState >= 2) {
+            bossbar set minecraft:faction_spawn players @a;
+            if(musicBoard:.musicNum == 3){
+                bossbar set minecraft:the_end players @a;
+            }else{
+            }
+        }
+
+        bossbar set bb2d:bb.3.global players @a;
+        bossbar set bb2d:bb.4.undefined players @a;
+        bossbar set bb2d:bb.5 players @a;
+
+        if(left.notifyAB:.three > 1){
+            bossbar set bb2d:bb.6.left3 players @a[team=left];
+        }
+        if(left.notifyAB:.two > 1){
+            bossbar set bb2d:bb.6.left2 players @a[team=left];
+        }
+
+        if(right.notifyAB:.three > 1){
+            bossbar set bb2d:bb.6.right3 players @a[team=right];
+        }
+        if(right.notifyAB:.two > 1){
+            bossbar set bb2d:bb.6.right2 players @a[team=right];
+        }
+
+    }
+
+    function refresh_main(){
+        bossbar set bb2d:bb.1.global players @a;
+        bossbar set bb2d:bb.2.global players;
+        bossbar set minecraft:faction_spawn players;
+        bossbar set minecraft:the_end players;
+        bossbar set bb2d:bb.3.global players;
+        bossbar set bb2d:bb.4.undefined players;
+        bossbar set bb2d:bb.5 players;
+        bossbar set bb2d:bb.6.left3 players;
+        bossbar set bb2d:bb.6.left2 players;
+        bossbar set bb2d:bb.6.right3 players;
+        bossbar set bb2d:bb.6.right2 players;
+
+
+
+
+        if(gameType:.type == 1 && gameControl:.gameState >= 2) {
+            bossbar set minecraft:faction_spawn players @a;
+            if(musicBoard:.musicNum == 3){
+                bossbar set minecraft:the_end players @a;
+            }
+        }
+
+        bossbar set bb2d:bb.3.global players @a;
+        bossbar set bb2d:bb.4.undefined players @a;
+        bossbar set bb2d:bb.5 players @a;
+    }
+
+
+
+
+}

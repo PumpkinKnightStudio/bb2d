@@ -1,0 +1,2 @@
+execute if score @s effect_inked matches 1.. run function bb2d_jmc:__private__/if_else/22
+execute if score @s damagerID matches 0 if score @s damagerCD matches 0 if score @s duiMemory matches 0 unless score $dm_triggered __variable__ matches 1.. run function bb2d_jmc:__private__/if_else/23

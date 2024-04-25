@@ -1,0 +1,14 @@
+{
+    "condition": "entity_properties",
+    "entity": "this",
+    "predicate": {
+        "effects": {
+            "resistance": {
+                "amplifier": {
+                    "min": 2,
+                    "max": 3
+                }
+            }
+        }
+    }
+}

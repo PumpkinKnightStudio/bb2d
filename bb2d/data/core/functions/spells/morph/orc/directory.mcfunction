@@ -1,0 +1,3 @@
+execute unless score @s atk.orc.cd matches 1.. run execute if score @s animate matches 0 run execute if score @s spell_id matches 1 run function core:spells/morph/orc/attack/init
+execute if score @s animate matches 0 run execute if score @s spell_id matches 3 run function core:spells/morph/orc/throw/init
+execute unless score @s chr.ult.cd matches 1.. run execute if score @s animate matches 0 run execute if score @s spell_id matches 5 run function core:spells/morph/orc/ultimate/init

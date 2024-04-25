@@ -1,0 +1,1 @@
+scoreboard objectives add cutscenetimer-2 dummy

@@ -1,0 +1,9 @@
+class loadModel{
+
+    function assignmodel(){
+        if(useCustomHead:@s == 8){
+            function core:2dlogic/morph/cg_morph;
+        }
+
+    }
+}

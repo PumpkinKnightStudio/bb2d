@@ -1,0 +1,1 @@
+function core:2dlogic/builder/outline_check_left

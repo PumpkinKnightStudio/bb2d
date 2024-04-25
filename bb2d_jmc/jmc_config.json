@@ -1,0 +1,7 @@
+{
+    "namespace": "bb2d_jmc",
+    "description": "",
+    "pack_format": "15",
+    "target": "main.jmc",
+    "output": "."
+}

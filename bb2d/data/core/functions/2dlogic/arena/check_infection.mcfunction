@@ -1,0 +1,1 @@
+execute unless entity @a[team=left,scores={playerID=1..}] run function core:2dlogic/arena/end_apply

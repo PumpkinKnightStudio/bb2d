@@ -1,0 +1,1 @@
+execute as @s unless data entity @s EnderItems[{Slot:11b}] run function core:menu/buy/iron_pickaxe

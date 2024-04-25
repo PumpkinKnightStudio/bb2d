@@ -1,0 +1,2 @@
+function core:2dlogic/model_animation/projectile_anim_set
+

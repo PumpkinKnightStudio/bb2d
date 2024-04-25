@@ -1,0 +1,48 @@
+class join{
+
+    function default_message() {
+        scoreboard players set @s joinedTime 1;
+        bossbar set bb2d:bb.1.global players @a;
+
+    }
+
+    function relocate() {
+        if(gameControl:.gameState == 0){
+            team join lobby @s;
+            scoreboard players set @s playerPage 0;
+            function core:2dlogic/arena/reset_shop;
+        
+            tp @s 237 5 -281 -0.0 -15.0;
+            execute as @s run function cutscene-101:start;
+            join.play_lobby_music();
+        }else if(gameControl:.gameState == 3){
+            if(playerID:@s >= 1){
+                execute as @s at @s run function core:2dlogic/arena/func_respawn;
+            }else{
+                gamemode adventure @s;
+                tp @s -122 8 -278 90 0;
+            }
+        }else if(gameControl:.gameState == 1){
+            if(playerID:@s >= 1){
+                tp @a 43 5 -262 90 0;
+                scoreboard players remove .votingTime mapVotingTime 200;
+            }else{
+                gamemode adventure @s;
+                tp @s -122 8 -278 90 0;
+            }
+        }
+    
+    }
+
+    function setup() {
+        advancement grant @s only core:chapter_two_quest/root;
+
+        gamemode adventure @s;
+    
+    }
+    
+
+    function play_lobby_music() {
+        scoreboard players set @s lobbyMusicC 0;
+    }
+}

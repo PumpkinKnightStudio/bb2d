@@ -1,0 +1,14 @@
+{
+  "criteria": {
+    "drink": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:potion"
+          ]
+        }
+      }
+    }
+  }
+}

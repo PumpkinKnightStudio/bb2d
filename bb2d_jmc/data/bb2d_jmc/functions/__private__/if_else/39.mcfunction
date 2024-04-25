@@ -1,0 +1,1 @@
+execute if score .two left.notifyAB > .three left.notifyAB run function bb2d_jmc:__private__/if_else/40

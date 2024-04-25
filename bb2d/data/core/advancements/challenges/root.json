@@ -1,0 +1,20 @@
+{
+	"display": {
+		"icon": {
+			"item": "minecraft:iron_sword"
+		},
+		"title": {"translate":"Challenges"},
+		"description": {"color":"#CCCCCC","translate":"Your Challenges Journey"},
+		"background": "minecraft:textures/block/dirt.png",
+		"show_toast": false,
+		"announce_to_chat": false
+	},
+	"rewards": {
+		"function": ""
+	},		
+	"criteria": {
+		"sword": {
+			"trigger": "minecraft:impossible"
+		}
+	}
+}

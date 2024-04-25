@@ -1,0 +1,7 @@
+{
+    "namespace": "bb2d_extra",
+    "description": "",
+    "pack_format": "18",
+    "target": "main.jmc",
+    "output": "."
+}

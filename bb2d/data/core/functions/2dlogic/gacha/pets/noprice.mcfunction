@@ -1,0 +1,2 @@
+tellraw @s ["",{"text":"PetPal: ","color":"dark_aqua"},{"text":"Better luck next time!","color":"green"}]
+summon armor_stand 253 6.5 -249 {CustomNameVisible:1b,NoGravity:1b,Silent:1b,Invulnerable:1b,ShowArms:0b,Marker:0b,Invisible:1b,NoBasePlate:1b,PersistenceRequired:0b,Tags:["pets_spawner"],DisabledSlots:4144959,CustomName:'{"text":"Empty Egg","color":"aqua","bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false}'}

@@ -1,0 +1,77 @@
+
+import "core/join_util";
+import "core/respawn_util";
+import "core/wander_ai";
+import "model_control/directory";
+import "core/building_util";
+import "core/announce";
+
+Player.rejoin(() => {
+    join.default_message();
+    announceBar.refresh_main();
+});
+Player.join(() => {
+    join.setup();
+    join.default_message();
+    announceBar.refresh_main();
+    join.relocate();
+
+});
+
+function __tick__() {
+    if(gameType:.type < 5){
+        if(gameControl:.gameState == 3){
+            execute as @a at @s run respawn_util.fall_detect();
+            anbar_timer();
+            //execute as @e[tag=aiMob] at @s run wander_ai.pathlogic();
+            //refresh_left();
+            //refresh_right();
+        }
+    }
+}
+
+function anbar_timer(){
+
+
+    
+    if(left.notifyAB:.three > 0){
+        left.notifyAB:.three--;
+    }else{
+       bossbar set bb2d:bb.6.left3 players;
+    }
+    if(left.notifyAB:.two > 0){
+        left.notifyAB:.two--;
+    }else{
+       bossbar set bb2d:bb.6.left2 players;
+    }
+    if(right.notifyAB:.three > 0){
+        right.notifyAB:.three--;
+    }else{
+        bossbar set bb2d:bb.6.right3 players;
+    }
+    if(right.notifyAB:.two > 0){
+        right.notifyAB:.two--;
+    }else{
+        bossbar set bb2d:bb.6.right2 players;
+    }
+
+}
+
+    function refresh_left(){
+        if(left.notifyAB:.three > 18){
+            announceBar.refresh_other();
+
+        }
+        if(left.notifyAB:.two > 18){
+            announceBar.refresh_other();
+        }
+    }
+
+    function refresh_right(){
+        if(right.notifyAB:.three > 18){
+            announceBar.refresh_other();
+        }
+        if(right.notifyAB:.two > 18){
+            announceBar.refresh_other();
+        }
+    }

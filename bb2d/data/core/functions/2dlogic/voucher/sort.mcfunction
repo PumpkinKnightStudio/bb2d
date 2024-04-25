@@ -1,0 +1,4 @@
+execute as @s run execute store result score @s voucherItem run clear @s paper{voucher:1} 1
+execute as @s run execute if score @s voucherItem matches 1 run execute if score @s gold matches 80.. run give @s carrot_on_a_stick{display:{Name:'{"text":"Pets Voucher","color":"aqua","bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false}'},voucherID:1} 1
+execute as @s run execute if score @s voucherItem matches 1 run execute if score @s gold matches ..79 run tellraw @s {"text":"You do not have enough gold to buy this item.","color":"red"}
+execute as @s run execute if score @s voucherItem matches 1 run execute if score @s gold matches 80.. run scoreboard players remove @s gold 80

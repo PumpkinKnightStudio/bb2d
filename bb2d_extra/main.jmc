@@ -1,0 +1,4 @@
+import "util/bossbar_util";
+
+function __tick__() {
+}

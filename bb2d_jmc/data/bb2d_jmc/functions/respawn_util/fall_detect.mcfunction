@@ -1,0 +1,1 @@
+execute if score @s playerID matches 1.. if predicate core:player_respawn run function bb2d_jmc:__private__/if_else/13

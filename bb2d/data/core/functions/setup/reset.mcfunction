@@ -1,0 +1,1 @@
+scoreboard players add #counter playerID 0

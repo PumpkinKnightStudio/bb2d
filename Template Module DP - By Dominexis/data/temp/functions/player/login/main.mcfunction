@@ -1,0 +1,3 @@
+# Send message
+
+#execute if score #debug_login_messages nexus.value matches 1 run tellraw @s [" ",{"text":"- ","color":"gray"},{"text":"Template Module","color":"gold"},{"text":" - ","color":"gray"},{"nbt": "modules[{id:\"template_module\"}].version.major", "storage": "nexus:data", "color": "gold"}, {"text": ".", "color": "gold"}, {"nbt": "modules[{id:\"template_module\"}].version.minor", "storage": "nexus:data", "color": "gold"}, {"text": ".", "color": "gold"}, {"nbt": "modules[{id:\"template_module\"}].version.patch", "storage": "nexus:data", "color": "gold"}]

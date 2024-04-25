@@ -1,0 +1,1 @@
+function core:spells/morph/cg/throw_chicken/attack1

@@ -1,0 +1,3 @@
+execute if score @s animate matches 0 run execute if score @s spell_id matches 1 run function core:spells/morph/flag/attack/init
+execute unless score @s a.WOC.cd matches 1.. run execute if score @s animate matches 0 run execute if score @s spell_id matches 2 run function core:spells/morph/flag/call/init
+execute unless score @s a.WOR.cd matches 1.. run execute if score @s animate matches 0 run execute if score @s spell_id matches 3 run function core:spells/morph/flag/wind/init

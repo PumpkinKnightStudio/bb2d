@@ -1,0 +1,1 @@
+execute if score .gameState gameControl matches 1 run function bb2d_jmc:__private__/if_else/6

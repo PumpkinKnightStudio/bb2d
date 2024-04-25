@@ -1,0 +1,1 @@
+execute if score .three left.notifyAB matches 2.. if score .two left.notifyAB matches 2.. run function bb2d_jmc:__private__/if_else/36

@@ -1,0 +1,20 @@
+{
+	"display": {
+		"icon": {
+			"item": "minecraft:book"
+		},
+		"title": {"translate":"Chapter II: Quests"},
+		"description": {"color":"#CCCCCC","translate":"Playing Chapter II"},
+		"background": "minecraft:textures/block/netherite_block.png",
+		"show_toast": false,
+		"announce_to_chat": false
+	},
+	"rewards": {
+		"function": ""
+	},		
+	"criteria": {
+		"sword": {
+			"trigger": "minecraft:impossible"
+		}
+	}
+}

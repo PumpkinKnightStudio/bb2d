@@ -1,0 +1,2 @@
+execute if score @s stunted matches 1 run execute at @s as @e if score @s playerID = @p playerID run execute as @s[type=armor_stand] at @s run summon armor_stand ~ ~3.25 ~ {CustomNameVisible:1b,NoGravity:0b,Silent:1b,Invulnerable:1b,ShowArms:0b,Small:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,Tags:["temp_message"],CustomName:'{"text":"COMBO!","bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false}'}
+

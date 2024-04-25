@@ -1,0 +1,1 @@
+execute as @e[team=right,type=armor_stand,distance=..5] at @s as @e if score @s playerID = @p[team=right] playerID run execute as @s[type=player,team=right] run scoreboard players add @s effect_inked 100

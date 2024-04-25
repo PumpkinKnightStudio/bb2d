@@ -1,0 +1,243 @@
+
+
+class respawn_util{
+
+    function fall_detect(){
+        if(playerID:@s >= 1){
+            if(predicate core:player_respawn){
+                //function core:2dlogic/arena/func_eliminated;
+                respawn_util.deathmessage();
+                respawn_util.deathbenefit();
+                scoreboard players set @s killStreak 0;
+                scoreboard players add @s deathCount 1;
+                summon block_display ~-20 -9 ~-6 {Tags:["eliminate"],brightness:{sky:15,block:15},transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[11f,11f,11f]},block_state:{Name:"minecraft:brown_stained_glass"}};
+                playsound minecraft:entity.blaze.death master @a ~ ~10 ~ 1 1.9;
+                scoreboard players set @s damagerID 0;
+                scoreboard players set @s health 0;
+                scoreboard players set @s fallChanceT 0;
+                scoreboard players set @s damagerCD 0;
+                scoreboard players set @s duiMemory 0;
+                scoreboard players set @s duiCanceller -1;
+                scoreboard players set @s damagerID2 0;
+                scoreboard players set @s friendlyFireID 0;
+                scoreboard players set @s effect.poison 0;
+
+                if(gameType:.type == 2){
+                    scoreboard players remove @s playerLives 1;
+                    execute if score @s playerLives matches 5 run attribute @s minecraft:generic.max_health base set 10;
+                    execute if score @s playerLives matches 4 run attribute @s minecraft:generic.max_health base set 8;
+                    execute if score @s playerLives matches 3 run attribute @s minecraft:generic.max_health base set 6;
+                    execute if score @s playerLives matches 2 run attribute @s minecraft:generic.max_health base set 4;
+                    execute if score @s playerLives matches 1 run attribute @s minecraft:generic.max_health base set 2;
+                    execute if score @s playerLives matches ..0 run attribute @s minecraft:generic.max_health base set 20;
+                    effect give @s minecraft:instant_health 1 1;
+
+                    if(playerLives:@s <= 0){
+                        execute as @s as @e at @s if score @s playerID = @p[scores={playerLives=0}] playerID run execute as @s[type=minecraft:armor_stand] run kill @s;
+                        execute as @s as @e at @s if score @s petsID = @p[scores={playerLives=0}] playerID run execute as @s[type=minecraft:armor_stand] run kill @s;
+                        scoreboard players set @s playerID -1;
+                        tp @s -122 8 -278 90 0;
+                        team join lobby @s;
+                        clear @s carrot_on_a_stick;
+                        clear @s shield;
+                    }
+                }
+
+                if(gameType:.type == 4){
+                    execute as @s[team=left] run scoreboard players set @s convert_zombie 1;
+
+                    execute as @s as @e at @s if score @s playerID = @p[scores={convert_zombie=1}] playerID run execute as @s[type=minecraft:armor_stand] run kill @s;
+                    execute as @s as @e at @s if score @s petsID = @p[scores={convert_zombie=1}] playerID run execute as @s[type=minecraft:armor_stand] run kill @s;
+                    team join right @s[scores={convert_zombie=1}];
+                    clear @s carrot_on_a_stick;
+                    clear @s shield;
+                    scoreboard players set @s useCustomHead 11;
+                    execute as @s[scores={convert_zombie=1}] at @s run function core:setup/make_self;
+                    scoreboard players set @s convert_zombie 0;
+
+                }
+
+                function core:2dlogic/arena/func_respawn;
+            }
+        }
+    }
+    function deathbenefit(){
+        execute as @s[team=left] at @s run {
+                if (damagerID:@s == 0 && damagerCD:@s == 0 && duiMemory:@s == 0){ //enemy own-death
+                    Text.tellraw(@a[team=right],"&<green>&<bold>+15 coins from enemy death.");
+                    scoreboard players add @a[team=right] coins 15;
+                }else if(damagerCD:@s > 0){ //enemy other-death
+                    Text.tellraw(@a[team=right],"&<green>&<bold>+15 coins from a successful elimination.");
+                    scoreboard players add @a[team=right] coins 15;
+                }else{ //anything else
+                    Text.tellraw(@a[team=right],"&<green>&<bold>+15 coins from a successful task.");
+                    scoreboard players add @a[team=right] coins 15;
+                }
+
+        }
+
+        execute as @s[team=right] at @s run {
+                if (damagerID:@s == 0 && damagerCD:@s == 0 && duiMemory:@s == 0){ //enemy own-death
+                    Text.tellraw(@a[team=left],"&<green>&<bold>+15 coins from enemy death.");
+                    scoreboard players add @a[team=left] coins 15;
+                }else if(damagerCD:@s > 0){ //enemy other-death
+                    Text.tellraw(@a[team=left],"&<green>&<bold>+15 coins from a successful elimination.");
+                    scoreboard players add @a[team=left] coins 15;
+                }else{ //anything else
+                    Text.tellraw(@a[team=left],"&<green>&<bold>+15 coins from a successful task.");
+                    scoreboard players add @a[team=left] coins 15;
+                }
+        }
+    }
+
+    function deathmessage(){
+
+        $dm_triggered = false;
+
+        execute as @s run{
+            
+            //elimination with inked effect
+            if(effect_inked:@s >= 1){
+
+
+                if(chr_gender:@s == 0){ //no-gender
+                    Text.tellraw(@a, "&<@s> &<yellow>shouldn't be walking with a squid ink covering their eyes.");
+                }
+                if(chr_gender:@s == 1){ //male
+                    Text.tellraw(@a, "&<@s> &<yellow>shouldn't be walking with a squid ink covering his eyes.");
+                }
+                if(chr_gender:@s == 2){ //female
+                    Text.tellraw(@a, "&<@s> &<yellow>shouldn't be walking with a squid ink covering her eyes.");
+                }
+
+                $dm_triggered = true;
+
+
+
+            }
+
+            if (damagerID:@s == 0 && 
+                damagerCD:@s == 0 && 
+                duiMemory:@s == 0 && 
+                !$dm_triggered) {
+                $dm_triggered = true;
+                Text.tellraw(@a, "&<@s> &<yellow>fell into the void.");
+
+                left.notifyAB:.two = 20;
+                function bb2d_extra:bossbarutil/announcedead;
+
+            }
+
+        }
+
+        
+        execute as @e run{
+            
+            if(!$dm_triggered){
+                if (damagerID:@p[scores={damagerCD=..240,damagerID2=0..}] == playerID:@s){
+                    execute as @s[type=player] run {
+                        Text.tellraw(@a,"&<@p> &<red>has been eliminated by &<@s>.");
+                        scoreboard players add @s killStreak 1;
+                        $dm_triggered = true;  
+                    }
+
+                }
+            }
+
+            $main_attacker = damagerID:@p;
+            if((damagerID:@p[scores={damagerCD=241..}] == playerID:@s) 
+            && !$dm_triggered) {
+
+                execute as @s[type=player] run {
+                    Text.tellraw(@a,"&<@p> &<red>met his end while running away from &<@s>.");
+                    scoreboard players add @s killStreak 1;
+                }
+            }
+
+            if(damagerID2:@p == playerID:@s){
+                $this_attacker = damagerID2:@p;
+
+                if($main_attacker != $this_attacker){
+                    execute as @s[type=player] run {
+                        Text.tellraw(@a,"&<@p> &<red>death was assisted by &<@s>.");
+                    }
+                }
+            }
+
+            if(damagerID:@p == playerID:@s)
+                execute as @s[type=player] run function core:2dlogic/arena/death_link;
+
+            if(duiMemory:@p > 0){
+                execute as @s[type=player] run respawn_util.duimessage();
+            }
+
+
+            execute as @s[type=player] run respawn_util.extra_obj();
+
+        }
+
+
+    }
+
+
+
+    function extra_obj(){
+
+
+        if(damagerID2:@p == -46 && damagerCD:@p <= 240){
+            if (playerID:@s == damagerID:@p){
+                if(friendlyFireID:@s == 0){
+                    execute as @s[type=player] run Text.tellraw(@a, "&<@p> &<red>was blown away by &<@s> \'s TNT");
+                }
+                if(friendlyFireID:@s == 1){
+                    execute as @s[type=player] run Text.tellraw(@a, "&<@p> &<red>was blown away by a TNT.");
+                }
+            }
+
+        }
+
+        if(damagerID2:@p == -70 && damagerCD:@p <= 240){
+            if (playerID:@s == damagerID:@p){
+                if(friendlyFireID:@s == 0){
+                    execute as @s[type=player] run Text.tellraw(@a, "&<@p> &<red>went kaboom by &<@s> \'s landmine");
+                }
+                if(friendlyFireID:@s == 1){
+                    execute as @s[type=player] run Text.tellraw(@a, "&<@p> &<red>was caught up in a landmine.");
+                }
+            }
+
+        }
+    }
+
+    function duimessage(){
+        if(duiMemory:@p > 0){
+            if(playerID:@s == damagerID:@p){
+                if(duiMemory:@p == 1){
+                    execute as @s[type=player] run Text.tellraw(@a,"&<red>&<bold>Autopsy: &<@p> &<gray>was recently stomped by a huge deer. (&<@s>\'s Ultimate)");
+                }
+                else if(duiMemory:@p == 2){
+                    execute as @s[type=player] run Text.tellraw(@a,"&<red>&<bold>Autopsy: &<@p> &<gray>was blown away by a heavy wind. (&<@s>\'s Ultimate)");
+                }
+            }
+        }
+    }
+
+    function left_toggle(){
+        if(left.notifyAB:.three == 0){
+            left.notifyAB:.three = 20;
+            bossbar set bb2d:bb.6.left3 players @a[team=left];
+            barID:.left = 3;        
+        }else if(left.notifyAB:.three > 1 && left.notifyAB:.two == 0){
+            left.notifyAB:.two = 20;
+            bossbar set bb2d:bb.6.left2 players @a[team=left];
+            barID:.left = 2;
+        }else if(left.notifyAB:.three > 1 && left.notifyAB:.two > 1){
+            if(left.notifyAB:.three > left.notifyAB:.two){
+                
+            }else if(left.notifyAB:.two > left.notifyAB:.three){
+                
+            }
+        }
+    }
+}
+

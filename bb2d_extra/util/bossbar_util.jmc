@@ -1,0 +1,12 @@
+
+class bossbarUtil{
+    
+    function announcedead(){
+
+
+        if(entity @s[team=left]){
+            Bossbar.setName(bb2d:bb.6.left2, "&<@p> &<yellow>died.");
+        }
+    }
+
+}

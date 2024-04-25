@@ -1,0 +1,1 @@
+execute if entity @s[tag=aiMob] run function bb2d_jmc:__private__/if_else/44

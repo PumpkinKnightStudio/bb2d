@@ -1,0 +1,2 @@
+execute if score @s friendlyFireID matches 0 if entity @s[type=player] run tellraw @a ["",{"selector":"@p"},{"text":" "},{"text":"went kaboom by ","color":"red"},{"selector":"@s","color":"red"},{"text":" 's landmine","color":"red"}]
+execute if score @s friendlyFireID matches 1 if entity @s[type=player] run tellraw @a ["",{"selector":"@p"},{"text":" "},{"text":"was caught up in a landmine.","color":"red"}]

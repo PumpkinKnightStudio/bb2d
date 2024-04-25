@@ -1,0 +1,1 @@
+execute as @a at @s run execute if score @s yLoc matches 50..90 run execute if score @s respawning matches 0 run execute if block ~ ~-1 ~ minecraft:barrier run tp @s ~ ~-0.1 ~

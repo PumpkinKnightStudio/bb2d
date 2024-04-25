@@ -1,0 +1,2 @@
+tellraw @a ["",{"selector":"@p"},{"text":" "},{"text":"met his end while running away from ","color":"red"},{"selector":"@s","color":"red"},{"text":".","color":"red"}]
+scoreboard players add @s killStreak 1

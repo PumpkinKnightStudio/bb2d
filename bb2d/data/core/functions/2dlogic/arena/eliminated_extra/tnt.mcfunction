@@ -1,0 +1,3 @@
+
+execute as @s at @s as @e if score @s playerID = @p[scores={friendlyFireID=0,damagerCD=..240,damagerID2=-46}] damagerID run execute as @s[type=player] run tellraw @a ["",{"text":"","bold":true,"color":"red"},{"selector":"@p"},{"text":" was blown away by ","color":"yellow"},{"selector":"@s"},{"text":"'s TNT."}]
+execute as @s[scores={friendlyFireID=1}] at @s as @e unless score @s playerID = @p[scores={friendlyFireID=1,damagerCD=..240,damagerID2=-46}] damagerID run execute as @s[type=player] run tellraw @a ["",{"text":"","bold":true,"color":"red"},{"selector":"@p"},{"text":" got caught up in his own","color":"yellow"},{"text":" Landmine."}]

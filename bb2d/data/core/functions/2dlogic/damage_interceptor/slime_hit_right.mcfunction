@@ -1,0 +1,3 @@
+execute as @e[team=right,type=armor_stand,distance=..2] at @s as @e if score @s playerID = @p[team=right] playerID run execute as @s[type=player,team=right] run scoreboard players add @s effect.poison 2
+execute as @e[team=right,type=armor_stand,distance=..2] at @s as @e if score @s playerID = @p[team=right] playerID run execute as @s[type=player,team=right] run scoreboard players add @s[scores={effect.poison=6..}] damage 40
+execute as @s[tag=left] at @s run execute positioned ~10 ~1 ~ run scoreboard players operation @e[team=right,distance=0..3.1,sort=nearest] damagerID = @s damagerID

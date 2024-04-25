@@ -1,0 +1,1 @@
+data merge entity @s {ShowArms:1b,Pose:{Body:[357f,0f,0f],Head:[333f,0f,0f],LeftLeg:[328f,0f,0f],RightLeg:[7f,0f,0f],LeftArm:[244f,300f,0f],RightArm:[304f,30f,0f]}}
